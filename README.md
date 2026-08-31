@@ -2,13 +2,13 @@
 
 A custom three-phase brushless DC (BLDC) motor designed, CAD-modelled, 3D printed, wound, assembled, and physically tested as an electromechanical engineering project.
 
-The design was developed around a **15 V / 5 A electrical input constraint**, with a target operating speed of **3,000 RPM** and target torque of **0.12 N·m**. The project combined electric-machine calculations, SolidWorks CAD, 3D-printed components, N52 neodymium magnets, copper windings, and a Wye-connected three-phase stator.
+The design was developed around a **15 V / 5 A (75 W) electrical input constraint**, with a target operating speed of **3,000 RPM**, target torque of **0.12 N·m**, and an **original estimated efficiency of ~63%**. The project combined electric-machine calculations, SolidWorks CAD, 3D-printed components, N52 neodymium magnets, copper windings, and a Wye-connected three-phase stator.
 
 ---
 
 ## Final Prototype
 
-![Physical BLDC Motor](images/physical_motor.png)
+![Physical BLDC Motor](images/physical_motor.jpg)
 
 ---
 
@@ -35,6 +35,7 @@ The design was developed around a **15 V / 5 A electrical input constraint**, wi
 | Maximum Electrical Input | 75 W |
 | Target Speed | 3,000 RPM |
 | Target Torque | 0.12 N·m |
+| Original Estimated Efficiency | ~63% |
 | Winding Connection | Wye / Star |
 | Permanent Magnets | N52 Neodymium |
 | CAD Software | SolidWorks |
@@ -193,7 +194,7 @@ The build process included:
 9. Checking clearances, wiring, and alignment
 10. Physically testing the completed motor
 
-![Physical Motor](images/physical_motor.png)
+![Physical Motor](images/physical_motor.jpg)
 
 ---
 
@@ -312,6 +313,6 @@ Future work could include:
 
 This project demonstrates the complete development of a custom BLDC motor from engineering requirements through physical implementation.
 
-The motor was **designed in SolidWorks, fabricated using 3D-printed components, wound by hand, assembled with N52 permanent magnets, connected in a three-phase Wye configuration, and physically tested**.
+The motor was **designed in SolidWorks, fabricated using 3D-printed components, wound by hand, assembled with N52 permanent magnets, connected in a three-phase Wye configuration, and physically tested**. The original design targeted **3,000 RPM and 0.12 N·m torque** under a **15 V / 5 A (75 W) electrical constraint**, with an **estimated efficiency of ~63%**.
 
 The project strengthened practical experience in **electric-machine design, electromagnetic calculations, CAD, prototyping, fabrication, and engineering testing**.
