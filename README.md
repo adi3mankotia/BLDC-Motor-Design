@@ -1,266 +1,317 @@
-BLDC Motor Design, Fabrication & Testing
+# BLDC Motor Design, Fabrication & Testing
 
-Overview
+A custom three-phase brushless DC (BLDC) motor designed, CAD-modelled, 3D printed, wound, assembled, and physically tested as an electromechanical engineering project.
 
-This project documents the design, CAD modelling, fabrication, winding, assembly, and testing of a custom three-phase brushless DC (BLDC) motor developed as an electromechanical engineering project.
+The design was developed around a **15 V / 5 A electrical input constraint**, with a target operating speed of **3,000 RPM** and target torque of **0.12 N·m**. The project combined electric-machine calculations, SolidWorks CAD, 3D-printed components, N52 neodymium magnets, copper windings, and a Wye-connected three-phase stator.
 
-The motor was designed around a 15 V / 5 A electrical input constraint, with a target operating speed of 3,000 RPM and target torque of 0.12 N·m. The project combined electromagnetic design, SolidWorks CAD, 3D-printed components, N52 neodymium permanent magnets, copper windings, a Wye-connected three-phase stator, and physical prototype testing.
+---
 
-Note: The original detailed calculation worksheet is no longer available. The equations below reconstruct the key engineering relationships used in the design from the original project specifications. Values are presented transparently as design targets or reconstructed calculations rather than as preserved test measurements.
+## Final Prototype
 
-Final Prototype
+![Physical BLDC Motor](images/physical_motor.jpg)
 
+---
 
+## Project Highlights
 
-The final prototype was physically fabricated, wound, assembled, mounted, and tested. The build used a custom stator/rotor geometry, hand-wound copper coils, permanent magnets, a central shaft, and 3D-printed structural components.
+- Designed a custom **three-phase BLDC motor**
+- Modelled the rotor, stator, and full assembly in **SolidWorks**
+- Fabricated major structural components using **3D printing**
+- Hand-wound the stator using copper magnet wire
+- Integrated **N52 neodymium permanent magnets**
+- Used a **Wye (Star) winding configuration**
+- Assembled and physically tested the completed prototype
+- Evaluated electrical, electromagnetic, and mechanical design considerations
 
-Project Objectives
+---
 
-The project was completed to demonstrate the full engineering workflow from electrical-machine theory to a physical prototype:
+## Design Specifications
 
-Requirements → calculations → electromagnetic configuration → CAD modelling → 3D printing → winding → assembly → testing → performance evaluation
+| Parameter | Design Value |
+|---|---:|
+| Motor Type | Three-phase BLDC |
+| Supply Voltage | 15 V |
+| Maximum Design Current | 5 A |
+| Maximum Electrical Input | 75 W |
+| Target Speed | 3,000 RPM |
+| Target Torque | 0.12 N·m |
+| Winding Connection | Wye / Star |
+| Permanent Magnets | N52 Neodymium |
+| CAD Software | SolidWorks |
+| Fabrication Method | 3D Printing + Manual Assembly |
 
-The main objectives were to:
+> **Note:** The original detailed calculation and measurement sheets are no longer available. The calculations below reconstruct the main engineering relationships from the original design targets. They are presented as design calculations, not preserved experimental measurements.
 
-design a compact three-phase BLDC motor around a 15 V supply;
+---
 
-target approximately 3,000 RPM and 0.12 N·m torque;
+## Engineering Calculations
 
-calculate key motor-design relationships including angular velocity, mechanical power, torque constant, back-EMF relationships, and winding requirements;
+### Angular Velocity
 
-model the motor components and assembly in SolidWorks;
+Rotational speed can be converted from RPM to angular velocity using:
 
-fabricate the rotor/stator structure using 3D printing;
-
-integrate N52 permanent magnets and copper windings;
-
-connect the stator in a Wye configuration;
-
-assemble and physically test the completed motor.
-
-Design Specifications
-
-Parameter
-
-Design Value
-
-Motor type
-
-Three-phase BLDC
-
-Supply voltage
-
-15 V
-
-Maximum design current
-
-5 A
-
-Maximum electrical input
-
-75 W
-
-Target speed
-
-3,000 RPM
-
-Target torque
-
-0.12 N·m
-
-Stator connection
-
-Wye / Star
-
-Permanent magnets
-
-N52 Neodymium
-
-CAD platform
-
-SolidWorks
-
-Fabrication
-
-3D Printing + manual assembly
-
-The 75 W value represents the electrical design limit implied by the 15 V, 5 A supply:
-
-P_electrical,max = V × I
-P_electrical,max = 15 × 5
-P_electrical,max = 75 W
-
-Engineering Design Relationships
-
-1. Angular Velocity
-
-Rotational speed in RPM can be converted to angular velocity using:
-
+```text
 ω = 2πN / 60
+```
 
-For the 3,000 RPM design target:
+For the 3,000 RPM target:
 
+```text
 ω = 2π(3000) / 60
 ω ≈ 314.2 rad/s
+```
 
-2. Mechanical Output Power
+### Mechanical Power at the Target Operating Point
 
 Mechanical power is related to torque and angular velocity by:
 
+```text
 P_mech = τω
+```
 
 Using the target torque and speed:
 
+```text
 P_mech = 0.12 × 314.2
 P_mech ≈ 37.7 W
+```
 
-This is the mechanical power corresponding to the simultaneous 3,000 RPM / 0.12 N·m target operating point.
-
-3. Electrical Input Power
+### Maximum Electrical Input
 
 Electrical input power is:
 
+```text
 P_in = VI
+```
 
-At the maximum 15 V / 5 A design constraint:
+At the 15 V / 5 A design limit:
 
+```text
 P_in = 15 × 5
 P_in = 75 W
+```
 
-The electrical input limit and the target mechanical operating point are separate design quantities. Actual efficiency requires measured electrical input and mechanical output at the same operating condition.
+### Torque Constant
 
-4. Efficiency
+The torque constant relates electromagnetic torque to motor current:
 
-Motor efficiency is calculated from:
-
-η = (P_mech / P_in) × 100%
-
-A verified efficiency value requires voltage, current, speed, and torque measurements taken at the same operating point. Because the original detailed test worksheet is no longer available, this repository does not claim a reconstructed efficiency as a measured result.
-
-5. Torque Constant
-
-The motor torque constant relates electromagnetic torque to current:
-
+```text
 K_t = τ / I
+```
 
-The exact value depends on the current definition and operating condition used in the original design. The relationship was part of the motor-sizing process, but the original calculation sheet is unavailable.
+### Back-EMF Relationship
 
-6. Back-EMF Constant
+Back electromotive force increases with rotor speed:
 
-Back electromotive force increases with rotor speed and can be represented by:
-
-E = K_e ω
+```text
+E = K_eω
+```
 
 where:
 
-E = back EMF
+- `E` = back EMF
+- `K_e` = back-EMF constant
+- `ω` = angular velocity
 
-K_e = back-EMF constant
+A numerical `K_t` or `K_e` value is not claimed here because the original calculation sheet is no longer available.
 
-ω = angular velocity
+---
 
-A numerical back-EMF constant is not reconstructed here because the original measured/generated back-EMF value is unavailable.
+## CAD Design
 
-CAD Design
+The rotor, stator components, and full motor assembly were modelled in **SolidWorks** before fabrication.
 
-The motor components and full assembly were modelled in SolidWorks before fabrication. The CAD stage was used to define the motor geometry and evaluate component fit, shaft alignment, rotor/stator spacing, and assembly feasibility.
+The CAD stage was used to evaluate:
 
-Full Assembly
+- overall motor geometry
+- rotor/stator fit
+- shaft alignment
+- winding space
+- magnet placement
+- component clearances
+- 3D-printing feasibility
+- final assembly fit
 
+### Full Assembly
 
+![Full BLDC Motor Assembly](images/full_assembly.png)
 
-Stator / Internal Geometry
+### Stator / Internal Geometry
 
+![Stator Design](images/stator_design.png)
 
+### Side View
 
-Side View
+![Motor Side View](images/side_view.png)
 
+The original native SolidWorks files are included in the repository:
 
-
-The repository includes the original native SolidWorks files:
-
-cad/solidworks/
+```text
+cad/
 ├── BLDC_Motor_Assembly.SLDASM
 ├── Rotor.SLDPRT
 ├── StatorTop.SLDPRT
 └── StatorBottom.SLDPRT
+```
 
-Electromagnetic Configuration
+---
 
-The motor used a three-phase stator with copper windings and N52 neodymium permanent magnets in the rotor. The stator phases were connected in a Wye (Star) configuration.
+## Electromagnetic Configuration
 
-The electromagnetic design process considered target torque and speed, supply-voltage/current constraints, winding turns and available slot space, permanent-magnet strength and placement, rotor/stator geometry, air-gap control, back-EMF behaviour, and mechanical fit/alignment.
+The motor used a three-phase stator with copper windings and **N52 neodymium permanent magnets** in the rotor.
 
-Fabrication & Assembly
+The stator phases were connected in a **Wye (Star) configuration**.
 
-After the CAD design was completed, the major structural components were 3D printed and assembled into the physical motor.
+The design process considered:
 
-The build process included CAD modelling, 3D printing, stator winding, N52 magnet installation, three-phase Wye connection, shaft/mechanical assembly, full motor assembly, mounting, and pre-test checks.
+- target speed and torque
+- voltage and current constraints
+- winding requirements
+- available winding space
+- permanent-magnet placement
+- rotor/stator geometry
+- air-gap control
+- back-EMF behaviour
+- shaft and mechanical alignment
 
+---
 
+## Fabrication & Assembly
 
-Testing
+After the SolidWorks design was completed, the motor was physically fabricated and assembled.
+
+The build process included:
+
+1. CAD modelling of the rotor and stator
+2. 3D printing of the structural components
+3. Hand-winding the stator
+4. Installing N52 permanent magnets
+5. Connecting the stator phases in Wye
+6. Installing the shaft and mechanical components
+7. Completing the motor assembly
+8. Mounting the prototype to a test base
+9. Checking clearances, wiring, and alignment
+10. Physically testing the completed motor
+
+![Physical Motor](images/physical_motor.jpg)
+
+---
+
+## Testing
 
 The completed motor was physically tested after assembly.
 
-Before operation, the prototype was checked for rotor/stator clearance, shaft alignment, winding continuity, phase connections, magnet placement, mechanical interference, secure mounting, and supply-voltage/current limits.
+Before operation, the prototype was checked for:
 
-Testing was used to evaluate the prototype as a complete electromechanical system and to identify differences between theoretical design targets and real-world performance.
+- rotor/stator clearance
+- shaft alignment
+- winding continuity
+- phase connections
+- magnet placement
+- mechanical interference
+- secure mounting
+- supply-voltage/current limits
 
-Because the original detailed measurement sheet is no longer available, this repository distinguishes design targets from verified measurements and avoids presenting reconstructed values as experimental data.
+Testing was used to evaluate the prototype as a complete electromechanical system and identify differences between theoretical design targets and real-world performance.
 
-Engineering Lessons Learned
+Because the original detailed test sheet is no longer available, this repository intentionally distinguishes **design targets** from **verified measurements**.
 
-This project demonstrated that successful electric-machine design depends on more than analytical calculations. Physical performance is also affected by manufacturing tolerances, winding feasibility, air-gap control, magnet placement, shaft alignment, friction, material properties, and assembly quality.
+---
+
+## Engineering Lessons Learned
+
+This project demonstrated that electric-machine performance depends on more than theoretical calculations.
+
+Practical performance is also influenced by:
+
+- manufacturing tolerances
+- winding feasibility
+- rotor/stator air gap
+- magnet positioning
+- shaft alignment
+- mechanical friction
+- material properties
+- assembly quality
 
 The project provided hands-on experience connecting:
 
-electromagnetic theory + electrical calculations + CAD + fabrication + wiring + mechanical assembly + testing
+**electromagnetic theory → electrical calculations → CAD → fabrication → winding → assembly → testing**
 
 into one complete engineering system.
 
-Repository Structure
+---
 
+## Repository Structure
+
+```text
 BLDC-Motor-Design-and-Fabrication/
 │
 ├── README.md
+│
 ├── cad/
-│   ├── solidworks/
-│   │   ├── Rotor.SLDPRT
-│   │   ├── StatorTop.SLDPRT
-│   │   ├── StatorBottom.SLDPRT
-│   │   └── BLDC_Motor_Assembly.SLDASM
-│   ├── step/
-│   └── stl/
-├── images/
-│   ├── physical_motor.jpg
-│   ├── full_assembly.png
-│   ├── stator_design.png
-│   └── side_view.png
-├── calculations/
-│   └── design_calculations.md
-├── testing/
-│   └── test_results.md
-└── report/
+│   ├── BLDC_Motor_Assembly.SLDASM
+│   ├── Rotor.SLDPRT
+│   ├── StatorTop.SLDPRT
+│   └── StatorBottom.SLDPRT
+│
+└── images/
+    ├── physical_motor.jpg
+    ├── full_assembly.png
+    ├── stator_design.png
+    └── side_view.png
+```
 
-Tools & Skills Demonstrated
+---
 
-Electrical Engineering: BLDC Motor Design, Electric Machines, Electromagnetic Design, Three-Phase Windings, Wye Connection, Back-EMF, Torque/Speed Relationships
+## Skills Demonstrated
 
-CAD & Fabrication: SolidWorks, 3D Printing, Component Design, Assembly Modelling, Prototype Fabrication
+**Electrical Engineering**
+- BLDC motor design
+- Electric machines
+- Electromagnetic design
+- Three-phase windings
+- Wye connection
+- Back-EMF and torque-speed relationships
 
-Hardware: N52 Neodymium Magnets, Copper Windings, Shaft/Mechanical Assembly
+**CAD & Fabrication**
+- SolidWorks
+- 3D printing
+- Component modelling
+- Assembly modelling
+- Prototype fabrication
 
-Engineering Process: Requirements Definition, Design Calculations, CAD Modelling, Fabrication, Assembly, Testing, Design Evaluation
+**Engineering Process**
+- Requirements definition
+- Design calculations
+- CAD development
+- Fabrication
+- Assembly
+- Physical testing
+- Design evaluation
 
-Future Improvements
+---
 
-Future development could include quantitative characterization of the motor using a tachometer, current/voltage sensing, torque measurement, and back-EMF measurements. The CAD could also be refined to reduce the rotor-stator air gap, improve shaft/bearing alignment, increase winding space, and improve manufacturing tolerances.
+## Future Improvements
 
-Additional testing could produce verified speed-torque curves, efficiency maps, current measurements, thermal data, and comparisons between theoretical predictions and measured performance.
+Future work could include:
 
-Project Summary
+- measuring no-load and loaded RPM with a tachometer
+- measuring voltage and phase current during operation
+- measuring torque directly
+- measuring back EMF
+- generating speed-torque curves
+- calculating efficiency from synchronized measurements
+- improving rotor/stator air-gap tolerances
+- improving shaft and bearing alignment
+- refining winding space and copper fill
+- comparing theoretical predictions with measured performance
 
-This project involved the complete design and physical construction of a custom three-phase BLDC motor. Starting from electrical and mechanical requirements, the motor was modelled in SolidWorks, fabricated using 3D-printed components, wound by hand, assembled with N52 permanent magnets in a Wye-connected configuration, and physically tested.
+---
 
-The project demonstrates practical experience in electric-machine design, electromagnetic calculations, CAD, prototyping, fabrication, and engineering testing.
+## Summary
+
+This project demonstrates the complete development of a custom BLDC motor from engineering requirements through physical implementation.
+
+The motor was **designed in SolidWorks, fabricated using 3D-printed components, wound by hand, assembled with N52 permanent magnets, connected in a three-phase Wye configuration, and physically tested**.
+
+The project strengthened practical experience in **electric-machine design, electromagnetic calculations, CAD, prototyping, fabrication, and engineering testing**.
