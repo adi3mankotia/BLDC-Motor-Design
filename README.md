@@ -8,7 +8,7 @@ The design was developed around a **15 V / 5 A (75 W) electrical input constrain
 
 ## Final Prototype
 
-![Physical BLDC Motor](images/physical_motor.jpg)
+![Physical BLDC Motor](images/physical_motor.png)
 
 ---
 
@@ -194,7 +194,7 @@ The build process included:
 9. Checking clearances, wiring, and alignment
 10. Physically testing the completed motor
 
-![Physical Motor](images/physical_motor.jpg)
+![Physical Motor](images/physical_motor.png)
 
 ---
 
